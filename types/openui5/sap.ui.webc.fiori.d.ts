@@ -1,4 +1,4 @@
-// For Library Version: 1.102.0
+// For Library Version: 1.105.0
 
 declare module "sap/ui/webc/fiori/library" {
   /**
@@ -54,7 +54,7 @@ declare module "sap/ui/webc/fiori/library" {
      * Desktop: 25/25/50 Start, Mid and End (expanded) columns are displayed Tablet: 0/33/67 Mid and End (expanded)
      * columns are displayed, Start is accessible by layout arrows Phone: -/-/100 (only the End column is displayed)
      *
-     * Use to display all three pages (master, detail, detail-detail) when the user should focus on the detail-detail.
+     * Use to display all three pages (list, detail, detail-detail) when the user should focus on the detail-detail.
      */
     ThreeColumnsEndExpanded = "ThreeColumnsEndExpanded",
     /**
@@ -62,7 +62,7 @@ declare module "sap/ui/webc/fiori/library" {
      * and End columns are displayed, Start is accessible by a layout arrow Phone: -/-/100 only the End column
      * is displayed
      *
-     * Use to display all three pages (master, detail, detail-detail) when the user should focus on the detail.
+     * Use to display all three pages (list, detail, detail-detail) when the user should focus on the detail.
      */
     ThreeColumnsMidExpanded = "ThreeColumnsMidExpanded",
     /**
@@ -70,7 +70,7 @@ declare module "sap/ui/webc/fiori/library" {
      * Tablet: 33/67/0 Start and Mid (expanded) columns are displayed, End is accessible by a layout arrow Phone:
      * -/-/100 only the End column is displayed
      *
-     * Use to display the master and detail pages when the user should focus on the detail. The detail-detail
+     * Use to display the list and detail pages when the user should focus on the detail. The detail-detail
      * is still loaded and easily accessible with a layout arrow.
      */
     ThreeColumnsMidExpandedEndHidden = "ThreeColumnsMidExpandedEndHidden",
@@ -79,22 +79,22 @@ declare module "sap/ui/webc/fiori/library" {
      * 67/33/0 Start (expanded) and Mid columns are displayed, End is accessible by layout arrows Phone: -/-/100
      * only the End column is displayed
      *
-     * Use to display the master and detail pages when the user should focus on the master. The detail-detail
-     * is still loaded and easily accessible with layout arrows.
+     * Use to display the list and detail pages when the user should focus on the list. The detail-detail is
+     * still loaded and easily accessible with layout arrows.
      */
     ThreeColumnsStartExpandedEndHidden = "ThreeColumnsStartExpandedEndHidden",
     /**
      * Desktop: 33/67/- Start and Mid (expanded) columns are displayed Tablet: 33/67/- Start and Mid (expanded)
      * columns are displayed Phone: -/100/- only the Mid column is displayed
      *
-     * Use to display both a master and a detail page when the user should focus on the detail page.
+     * Use to display both a list and a detail page when the user should focus on the detail page.
      */
     TwoColumnsMidExpanded = "TwoColumnsMidExpanded",
     /**
      * Desktop: 67/33/- Start (expanded) and Mid columns are displayed Tablet: 67/33/- Start (expanded) and
      * Mid columns are displayed Phone: -/100/- only the Mid column is displayed
      *
-     * Use to display both a master and a detail page when the user should focus on the master page.
+     * Use to display both a list and a detail page when the user should focus on the list page.
      */
     TwoColumnsStartExpanded = "TwoColumnsStartExpanded",
   }
@@ -128,6 +128,41 @@ declare module "sap/ui/webc/fiori/library" {
     __implements__sap_ui_webc_fiori_IFilterItemOption: boolean;
   }
 
+  /**
+   * @SINCE 1.106.0
+   * @EXPERIMENTAL (since 1.106.0)
+   *
+   * Different types of IllustrationMessageSize.
+   */
+  export enum IllustrationMessageSize {
+    /**
+     * Automatically decides the `Illustration` size (`Base`, `Spot`, `Dialog`, or `Scene`) depending on the
+     * `IllustratedMessage` container width.
+     *
+     * **Note:** `Auto` is the only option where the illustration size is changed according to the available
+     * container width. If any other `IllustratedMessageSize` is chosen, it remains until changed by the app
+     * developer.
+     */
+    Auto = "Auto",
+    /**
+     * Base `Illustration` size (XS breakpoint). Suitable for cards (two columns).
+     *
+     * **Note:** When `Base` is in use, no illustration is displayed.
+     */
+    Base = "Base",
+    /**
+     * Dialog `Illustration` size (M breakpoint). Suitable for dialogs.
+     */
+    Dialog = "Dialog",
+    /**
+     * Scene `Illustration` size (L breakpoint). Suitable for a `Page` or a table.
+     */
+    Scene = "Scene",
+    /**
+     * Spot `Illustration` size (S breakpoint). Suitable for cards (four columns).
+     */
+    Spot = "Spot",
+  }
   /**
    * @SINCE 1.95.0
    * @EXPERIMENTAL (since 1.95.0)
@@ -963,7 +998,7 @@ declare module "sap/ui/webc/fiori/Bar" {
     /**
      * Gets current value of property {@link #getDesign design}.
      *
-     * Defines the `sap.ui.webc.fiori.Bar` design.
+     * Defines the component's design.
      *
      *
      *
@@ -1125,7 +1160,7 @@ declare module "sap/ui/webc/fiori/Bar" {
        * The endContent to remove or its index or id
        */
       vEndContent: int | string | Control
-    ): Control;
+    ): Control | null;
     /**
      * Removes a middleContent from the aggregation {@link #getMiddleContent middleContent}.
      *
@@ -1136,7 +1171,7 @@ declare module "sap/ui/webc/fiori/Bar" {
        * The middleContent to remove or its index or id
        */
       vMiddleContent: int | string | Control
-    ): Control;
+    ): Control | null;
     /**
      * Removes a startContent from the aggregation {@link #getStartContent startContent}.
      *
@@ -1147,11 +1182,11 @@ declare module "sap/ui/webc/fiori/Bar" {
        * The startContent to remove or its index or id
        */
       vStartContent: int | string | Control
-    ): Control;
+    ): Control | null;
     /**
      * Sets a new value for property {@link #getDesign design}.
      *
-     * Defines the `sap.ui.webc.fiori.Bar` design.
+     * Defines the component's design.
      *
      *
      *
@@ -1192,7 +1227,7 @@ declare module "sap/ui/webc/fiori/Bar" {
 
   export interface $BarSettings extends $WebComponentSettings {
     /**
-     * Defines the `sap.ui.webc.fiori.Bar` design.
+     * Defines the component's design.
      *
      *
      *
@@ -1973,7 +2008,7 @@ declare module "sap/ui/webc/fiori/DynamicSideContent" {
        * The content to remove or its index or id
        */
       vContent: int | string | Control
-    ): Control;
+    ): Control | null;
     /**
      * Removes a sideContent from the aggregation {@link #getSideContent sideContent}.
      *
@@ -1984,7 +2019,7 @@ declare module "sap/ui/webc/fiori/DynamicSideContent" {
        * The sideContent to remove or its index or id
        */
       vSideContent: int | string | Control
-    ): Control;
+    ): Control | null;
     /**
      * Sets a new value for property {@link #getEqualSplit equalSplit}.
      *
@@ -2385,7 +2420,7 @@ declare module "sap/ui/webc/fiori/FilterItem" {
        * The value to remove or its index or id
        */
       vValue: int | string | IFilterItemOption
-    ): IFilterItemOption;
+    ): IFilterItemOption | null;
     /**
      * Sets a new value for property {@link #getText text}.
      *
@@ -2599,7 +2634,7 @@ declare module "sap/ui/webc/fiori/FlexibleColumnLayout" {
    *
    * Overview:
    *
-   * The `FlexibleColumnLayout` implements the master-detail-detail paradigm by displaying up to three pages
+   * The `FlexibleColumnLayout` implements the list-detail-detail paradigm by displaying up to three pages
    * in separate columns. There are several possible layouts that can be changed either with the component
    * API, or by pressing the arrows, displayed between the columns.
    *
@@ -3203,7 +3238,10 @@ declare module "sap/ui/webc/fiori/IllustratedMessage" {
 
   import WebComponentMetadata from "sap/ui/webc/common/WebComponentMetadata";
 
-  import { IllustrationMessageType } from "sap/ui/webc/fiori/library";
+  import {
+    IllustrationMessageType,
+    IllustrationMessageSize,
+  } from "sap/ui/webc/fiori/library";
 
   import Control from "sap/ui/core/Control";
 
@@ -3335,6 +3373,26 @@ declare module "sap/ui/webc/fiori/IllustratedMessage" {
      */
     getName(): IllustrationMessageType | keyof typeof IllustrationMessageType;
     /**
+     * Gets current value of property {@link #getSize size}.
+     *
+     * Determines which illustration breakpoint variant is used.
+     *
+     *  Available options are:
+     * 	 - `Auto`
+     * 	 - `Base`
+     * 	 - `Spot`
+     * 	 - `Dialog`
+     * 	 - `Scene`
+     *
+     * As `IllustratedMessage` adapts itself around the `Illustration`, the other elements of the component
+     * are displayed differently on the different breakpoints/illustration sizes.
+     *
+     * Default value is `Auto`.
+     *
+     * @returns Value of property `size`
+     */
+    getSize(): IllustrationMessageSize | keyof typeof IllustrationMessageSize;
+    /**
      * Gets content of aggregation {@link #getSubtitle subtitle}.
      *
      * Defines the subtitle of the component.
@@ -3408,7 +3466,7 @@ declare module "sap/ui/webc/fiori/IllustratedMessage" {
        * The action to remove or its index or id
        */
       vAction: int | string | IButton
-    ): IButton;
+    ): IButton | null;
     /**
      * Removes all the controls from the aggregation {@link #getActions actions}.
      *
@@ -3431,6 +3489,33 @@ declare module "sap/ui/webc/fiori/IllustratedMessage" {
        * New value for property `name`
        */
       sName?: IllustrationMessageType | keyof typeof IllustrationMessageType
+    ): this;
+    /**
+     * Sets a new value for property {@link #getSize size}.
+     *
+     * Determines which illustration breakpoint variant is used.
+     *
+     *  Available options are:
+     * 	 - `Auto`
+     * 	 - `Base`
+     * 	 - `Spot`
+     * 	 - `Dialog`
+     * 	 - `Scene`
+     *
+     * As `IllustratedMessage` adapts itself around the `Illustration`, the other elements of the component
+     * are displayed differently on the different breakpoints/illustration sizes.
+     *
+     * When called with a value of `null` or `undefined`, the default value of the property will be restored.
+     *
+     * Default value is `Auto`.
+     *
+     * @returns Reference to `this` in order to allow method chaining
+     */
+    setSize(
+      /**
+       * New value for property `size`
+       */
+      sSize?: IllustrationMessageSize | keyof typeof IllustrationMessageSize
     ): this;
     /**
      * Sets the aggregated {@link #getSubtitle subtitle}.
@@ -3488,6 +3573,24 @@ declare module "sap/ui/webc/fiori/IllustratedMessage" {
   export interface $IllustratedMessageSettings extends $WebComponentSettings {
     name?:
       | (IllustrationMessageType | keyof typeof IllustrationMessageType)
+      | PropertyBindingInfo
+      | `{${string}}`;
+
+    /**
+     * Determines which illustration breakpoint variant is used.
+     *
+     *  Available options are:
+     * 	 - `Auto`
+     * 	 - `Base`
+     * 	 - `Spot`
+     * 	 - `Dialog`
+     * 	 - `Scene`
+     *
+     * As `IllustratedMessage` adapts itself around the `Illustration`, the other elements of the component
+     * are displayed differently on the different breakpoints/illustration sizes.
+     */
+    size?:
+      | (IllustrationMessageSize | keyof typeof IllustrationMessageSize)
       | PropertyBindingInfo
       | `{${string}}`;
 
@@ -3550,8 +3653,8 @@ declare module "sap/ui/webc/fiori/MediaGallery" {
    *
    * Overview:
    *
-   * The `ui-media-gallery` component allows the user to browse through multimedia items. Currently, the supported
-   * items are images and videos. The items should be defined using the `sap.ui.webc.fiori.MediaGalleryItem`
+   * The `sap.ui.webc.fiori.MediaGallery` component allows the user to browse through multimedia items. Currently,
+   * the supported items are images and videos. The items should be defined using the `sap.ui.webc.fiori.MediaGalleryItem`
    * component.
    *
    * The items are initially displayed as thumbnails. When the user selects a thumbnail, the corresponding
@@ -4010,7 +4113,7 @@ declare module "sap/ui/webc/fiori/MediaGallery" {
        * The item to remove or its index or id
        */
       vItem: int | string | IMediaGalleryItem
-    ): IMediaGalleryItem;
+    ): IMediaGalleryItem | null;
     /**
      * Sets a new value for property {@link #getInteractiveDisplayArea interactiveDisplayArea}.
      *
@@ -5206,7 +5309,7 @@ declare module "sap/ui/webc/fiori/NotificationListGroupItem" {
        * The action to remove or its index or id
        */
       vAction: int | string | INotificationAction
-    ): INotificationAction;
+    ): INotificationAction | null;
     /**
      * Removes all the controls from the aggregation {@link #getActions actions}.
      *
@@ -5233,7 +5336,7 @@ declare module "sap/ui/webc/fiori/NotificationListGroupItem" {
        * The item to remove or its index or id
        */
       vItem: int | string | INotificationListItem
-    ): INotificationListItem;
+    ): INotificationListItem | null;
     /**
      * Sets a new value for property {@link #getBusy busy}.
      *
@@ -5883,7 +5986,7 @@ declare module "sap/ui/webc/fiori/NotificationListItem" {
        * The action to remove or its index or id
        */
       vAction: int | string | INotificationAction
-    ): INotificationAction;
+    ): INotificationAction | null;
     /**
      * Removes all the controls from the aggregation {@link #getActions actions}.
      *
@@ -5910,7 +6013,7 @@ declare module "sap/ui/webc/fiori/NotificationListItem" {
        * The footnote to remove or its index or id
        */
       vFootnote: int | string | Control
-    ): Control;
+    ): Control | null;
     /**
      * Sets the aggregated {@link #getAvatar avatar}.
      *
@@ -6187,8 +6290,8 @@ declare module "sap/ui/webc/fiori/Page" {
    *
    * Overview:
    *
-   * The `sap.ui.webc.fiori.Page` is a container control that holds one whole screen of an application. The
-   * page has three distinct areas that can hold content - a header, content area and a footer. Structure:
+   * The `sap.ui.webc.fiori.Page` is a container component that holds one whole screen of an application.
+   * The page has three distinct areas that can hold content - a header, content area and a footer. Structure:
    * Header: The top most area of the page is occupied by the header. The standard header includes a navigation
    * button and a title. Content: The content occupies the main part of the page. Only the content area is
    * scrollable by default. This can be prevented by setting `enableScrolling` to `false`. Footer: The footer
@@ -6423,7 +6526,7 @@ declare module "sap/ui/webc/fiori/Page" {
        * The content to remove or its index or id
        */
       vContent: int | string | Control
-    ): Control;
+    ): Control | null;
     /**
      * Sets a new value for property {@link #getBackgroundDesign backgroundDesign}.
      *
@@ -6784,7 +6887,7 @@ declare module "sap/ui/webc/fiori/ProductSwitch" {
        * The item to remove or its index or id
        */
       vItem: int | string | IProductSwitchItem
-    ): IProductSwitchItem;
+    ): IProductSwitchItem | null;
   }
 
   export interface $ProductSwitchSettings extends $WebComponentSettings {
@@ -8085,7 +8188,7 @@ declare module "sap/ui/webc/fiori/ShellBar" {
        * The item to remove or its index or id
        */
       vItem: int | string | IShellBarItem
-    ): IShellBarItem;
+    ): IShellBarItem | null;
     /**
      * Removes a menuItem from the aggregation {@link #getMenuItems menuItems}.
      *
@@ -8096,7 +8199,7 @@ declare module "sap/ui/webc/fiori/ShellBar" {
        * The menuItem to remove or its index or id
        */
       vMenuItem: int | string | IListItem
-    ): IListItem;
+    ): IListItem | null;
     /**
      * Sets a new value for property {@link #getAccessibilityTexts accessibilityTexts}.
      *
@@ -9065,7 +9168,7 @@ declare module "sap/ui/webc/fiori/SideNavigation" {
        * The fixedItem to remove or its index or id
        */
       vFixedItem: int | string | ISideNavigationItem
-    ): ISideNavigationItem;
+    ): ISideNavigationItem | null;
     /**
      * Removes a header from the aggregation {@link #getHeader header}.
      *
@@ -9076,7 +9179,7 @@ declare module "sap/ui/webc/fiori/SideNavigation" {
        * The header to remove or its index or id
        */
       vHeader: int | string | Control
-    ): Control;
+    ): Control | null;
     /**
      * Removes a item from the aggregation {@link #getItems items}.
      *
@@ -9087,7 +9190,7 @@ declare module "sap/ui/webc/fiori/SideNavigation" {
        * The item to remove or its index or id
        */
       vItem: int | string | ISideNavigationItem
-    ): ISideNavigationItem;
+    ): ISideNavigationItem | null;
     /**
      * Sets a new value for property {@link #getCollapsed collapsed}.
      *
@@ -9373,7 +9476,7 @@ declare module "sap/ui/webc/fiori/SideNavigationItem" {
        * The item to remove or its index or id
        */
       vItem: int | string | ISideNavigationSubItem
-    ): ISideNavigationSubItem;
+    ): ISideNavigationSubItem | null;
     /**
      * Sets a new value for property {@link #getExpanded expanded}.
      *
@@ -10068,7 +10171,7 @@ declare module "sap/ui/webc/fiori/Timeline" {
        * The item to remove or its index or id
        */
       vItem: int | string | ITimelineItem
-    ): ITimelineItem;
+    ): ITimelineItem | null;
     /**
      * Sets a new value for property {@link #getAccessibleName accessibleName}.
      *
@@ -10473,7 +10576,7 @@ declare module "sap/ui/webc/fiori/TimelineItem" {
        * The content to remove or its index or id
        */
       vContent: int | string | Control
-    ): Control;
+    ): Control | null;
     /**
      * Sets a new value for property {@link #getIcon icon}.
      *
@@ -11169,7 +11272,7 @@ declare module "sap/ui/webc/fiori/UploadCollection" {
        * The header to remove or its index or id
        */
       vHeader: int | string | Control
-    ): Control;
+    ): Control | null;
     /**
      * Removes a item from the aggregation {@link #getItems items}.
      *
@@ -11180,7 +11283,7 @@ declare module "sap/ui/webc/fiori/UploadCollection" {
        * The item to remove or its index or id
        */
       vItem: int | string | IUploadCollectionItem
-    ): IUploadCollectionItem;
+    ): IUploadCollectionItem | null;
     /**
      * Sets a new value for property {@link #getAccessibleName accessibleName}.
      *
@@ -11979,7 +12082,7 @@ declare module "sap/ui/webc/fiori/UploadCollectionItem" {
        * The content to remove or its index or id
        */
       vContent: int | string | Control
-    ): Control;
+    ): Control | null;
     /**
      * Sets a new value for property {@link #getDisableDeleteButton disableDeleteButton}.
      *
@@ -12341,6 +12444,53 @@ declare module "sap/ui/webc/fiori/ViewSettingsDialog" {
       oSortItem: ISortItem
     ): this;
     /**
+     * Attaches event handler `fnFunction` to the {@link #event:beforeOpen beforeOpen} event of this `sap.ui.webc.fiori.ViewSettingsDialog`.
+     *
+     * When called, the context of the event handler (its `this`) will be bound to `oListener` if specified,
+     * otherwise it will be bound to this `sap.ui.webc.fiori.ViewSettingsDialog` itself.
+     *
+     * Fired before the component is opened. **This event does not bubble.**
+     *
+     * @returns Reference to `this` in order to allow method chaining
+     */
+    attachBeforeOpen(
+      /**
+       * An application-specific payload object that will be passed to the event handler along with the event
+       * object when firing the event
+       */
+      oData: object,
+      /**
+       * The function to be called when the event occurs
+       */
+      fnFunction: (p1: Event) => void,
+      /**
+       * Context object to call the event handler with. Defaults to this `sap.ui.webc.fiori.ViewSettingsDialog`
+       * itself
+       */
+      oListener?: object
+    ): this;
+    /**
+     * Attaches event handler `fnFunction` to the {@link #event:beforeOpen beforeOpen} event of this `sap.ui.webc.fiori.ViewSettingsDialog`.
+     *
+     * When called, the context of the event handler (its `this`) will be bound to `oListener` if specified,
+     * otherwise it will be bound to this `sap.ui.webc.fiori.ViewSettingsDialog` itself.
+     *
+     * Fired before the component is opened. **This event does not bubble.**
+     *
+     * @returns Reference to `this` in order to allow method chaining
+     */
+    attachBeforeOpen(
+      /**
+       * The function to be called when the event occurs
+       */
+      fnFunction: (p1: Event) => void,
+      /**
+       * Context object to call the event handler with. Defaults to this `sap.ui.webc.fiori.ViewSettingsDialog`
+       * itself
+       */
+      oListener?: object
+    ): this;
+    /**
      * Attaches event handler `fnFunction` to the {@link #event:cancel cancel} event of this `sap.ui.webc.fiori.ViewSettingsDialog`.
      *
      * When called, the context of the event handler (its `this`) will be bound to `oListener` if specified,
@@ -12447,6 +12597,23 @@ declare module "sap/ui/webc/fiori/ViewSettingsDialog" {
      */
     destroySortItems(): this;
     /**
+     * Detaches event handler `fnFunction` from the {@link #event:beforeOpen beforeOpen} event of this `sap.ui.webc.fiori.ViewSettingsDialog`.
+     *
+     * The passed function and listener object must match the ones used for event registration.
+     *
+     * @returns Reference to `this` in order to allow method chaining
+     */
+    detachBeforeOpen(
+      /**
+       * The function to be called, when the event occurs
+       */
+      fnFunction: (p1: Event) => void,
+      /**
+       * Context object on which the given function had to be called
+       */
+      oListener?: object
+    ): this;
+    /**
      * Detaches event handler `fnFunction` from the {@link #event:cancel cancel} event of this `sap.ui.webc.fiori.ViewSettingsDialog`.
      *
      * The passed function and listener object must match the ones used for event registration.
@@ -12479,6 +12646,17 @@ declare module "sap/ui/webc/fiori/ViewSettingsDialog" {
        * Context object on which the given function had to be called
        */
       oListener?: object
+    ): this;
+    /**
+     * Fires event {@link #event:beforeOpen beforeOpen} to attached listeners.
+     *
+     * @returns Reference to `this` in order to allow method chaining
+     */
+    fireBeforeOpen(
+      /**
+       * Parameters to pass along with the event
+       */
+      mParameters?: object
     ): this;
     /**
      * Fires event {@link #event:cancel cancel} to attached listeners.
@@ -12646,7 +12824,7 @@ declare module "sap/ui/webc/fiori/ViewSettingsDialog" {
        * The filterItem to remove or its index or id
        */
       vFilterItem: int | string | IFilterItem
-    ): IFilterItem;
+    ): IFilterItem | null;
     /**
      * Removes a sortItem from the aggregation {@link #getSortItems sortItems}.
      *
@@ -12657,7 +12835,20 @@ declare module "sap/ui/webc/fiori/ViewSettingsDialog" {
        * The sortItem to remove or its index or id
        */
       vSortItem: int | string | ISortItem
-    ): ISortItem;
+    ): ISortItem | null;
+    /**
+     * Sets a JavaScript object, as settings to the `sap.ui.webc.fiori.ViewSettingsDialog`. This method can
+     * be used after the dialog is initially open, as the dialog need to set its initial settings. The `sap.ui.webc.fiori.ViewSettingsDialog`
+     * throws an event called "before-open", this can be used as trigger point. The object should have the following
+     * format: `{ { "sortOrder" : "Ascending", "sortBy" : "Name", "filters" : [{"Filter 1": ["Some filter 1",
+     * "Some filter 2"]}, {"Filter 2": ["Some filter 4"]}]} }`
+     */
+    setConfirmedSettings(
+      /**
+       * A value to be set as predefined settings.
+       */
+      settings: string
+    ): void;
     /**
      * Sets a new value for property {@link #getSortDescending sortDescending}.
      *
@@ -12698,6 +12889,11 @@ declare module "sap/ui/webc/fiori/ViewSettingsDialog" {
       | ISortItem
       | AggregationBindingInfo
       | `{${string}}`;
+
+    /**
+     * Fired before the component is opened. **This event does not bubble.**
+     */
+    beforeOpen?: (oEvent: Event) => void;
 
     /**
      * Fired when cancel button is activated.
@@ -13029,7 +13225,7 @@ declare module "sap/ui/webc/fiori/Wizard" {
        * The step to remove or its index or id
        */
       vStep: int | string | IWizardStep
-    ): IWizardStep;
+    ): IWizardStep | null;
     /**
      * Sets a new value for property {@link #getHeight height}.
      *
@@ -13327,7 +13523,7 @@ declare module "sap/ui/webc/fiori/WizardStep" {
        * The content to remove or its index or id
        */
       vContent: int | string | Control
-    ): Control;
+    ): Control | null;
     /**
      * Sets a new value for property {@link #getBranching branching}.
      *
