@@ -13,13 +13,14 @@ This package contains type definitions for Fomantic UI (http://www.fomantic-ui.c
 | `calendar`   | [fomantic-ui-calendar](https://github.com/fomantic/DefinitelyTyped/tree/fomantic-ui-calendar)     | 🚧     |
 | `checkbox`   | [fomantic-ui-checkbox](https://github.com/fomantic/DefinitelyTyped/tree/fomantic-ui-checkbox)     | 🚧     |
 | `dimmer`     | [fomantic-ui-dimmer](https://github.com/fomantic/DefinitelyTyped/tree/fomantic-ui-dimmer)     | 🚧     |
-| `dropdown`   |      | ❌     |
+| `dropdown`   | [fomantic-ui-dropdown](https://github.com/fomantic/DefinitelyTyped/tree/fomantic-ui-dropdown)     | 🚧     |
 | `embed`      |      | ❌     |
-| `modal`      |      | ❌     |
-| `nag`        |      | ❌     |
-| `popup`      |      | ❌     |
+| `flyout`     | [fomantic-ui-flyout](https://github.com/fomantic/DefinitelyTyped/tree/fomantic-ui-flyout)     | 🚧     |
+| `modal`      | [fomantic-ui-modal](https://github.com/fomantic/DefinitelyTyped/tree/fomantic-ui-modal)     | 🚧     |
+| `nag`        | [fomantic-ui-nag](https://github.com/fomantic/DefinitelyTyped/tree/fomantic-ui-nag)     | 🚧     |
+| `popup`      | [fomantic-ui-popup](https://github.com/fomantic/DefinitelyTyped/tree/fomantic-ui-popup)     | 🚧     |
 | `progress`   |      | ❌     |
-| `rating`     |      | ❌     |
+| `rating`     | [fomantic-ui-rating](https://github.com/fomantic/DefinitelyTyped/tree/fomantic-ui-rating)     | 🚧     |
 | `search`     |      | ❌     |
 | `shape`      |      | ❌     |
 | `sidebar`    |      | ❌     |
