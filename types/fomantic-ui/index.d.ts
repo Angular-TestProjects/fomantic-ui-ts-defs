@@ -5,28 +5,53 @@
 
 /// <reference types="jquery" />
 
-// /// <reference types="fomantic-ui-site" />
+/// <reference path="fomantic-ui-accordion.d.ts" />
+/// <reference path="fomantic-ui-api.d.ts" />
+/// <reference path="fomantic-ui-calendar.d.ts" />
+/// <reference path="fomantic-ui-checkbox.d.ts" />
+/// <reference path="fomantic-ui-dimmer.d.ts" />
+/// <reference path="fomantic-ui-dimmer.d.ts" />
+/// <reference path="fomantic-ui-dropdown.d.ts" />
+/// <reference path="fomantic-ui-embed.d.ts" />
+/// <reference path="fomantic-ui-flyout.d.ts" />
+/// <reference path="fomantic-ui-form.d.ts" />
+/// <reference path="fomantic-ui-modal.d.ts" />
+/// <reference path="fomantic-ui-nag.d.ts" />
+/// <reference path="fomantic-ui-popup.d.ts" />
+/// <reference path="fomantic-ui-progress.d.ts" />
+/// <reference path="fomantic-ui-rating.d.ts" />
+/// <reference path="fomantic-ui-search.d.ts" />
+/// <reference path="fomantic-ui-shape.d.ts" />
+/// <reference path="fomantic-ui-sidebar.d.ts" />
+/// <reference path="fomantic-ui-slider.d.ts" />
+/// <reference path="fomantic-ui-sticky.d.ts" />
+/// <reference path="fomantic-ui-tab.d.ts" />
+/// <reference path="fomantic-ui-toast.d.ts" />
+/// <reference path="fomantic-ui-transition.d.ts" />
+/// <reference path="fomantic-ui-visibility.d.ts" />
 
-/// <reference types="fomantic-ui-accordion" />
-/// <reference types="fomantic-ui-calendar" />
-/// <reference types="fomantic-ui-checkbox" />
-/// <reference types="fomantic-ui-dimmer" />
-/// <reference types="fomantic-ui-dropdown" />
-/// <reference types="fomantic-ui-embed" />
-/// <reference types="fomantic-ui-flyout" />
-/// <reference types="fomantic-ui-modal" />
-/// <reference types="fomantic-ui-nag" />
-/// <reference types="fomantic-ui-popup" />
-/// <reference types="fomantic-ui-progress" />
-/// <reference types="fomantic-ui-rating" />
-/// <reference types="fomantic-ui-search" />
-/// <reference types="fomantic-ui-shape" />
-/// <reference types="fomantic-ui-sidebar" />
-/// <reference types="fomantic-ui-sticky" />
-/// <reference types="fomantic-ui-tab" />
-/// <reference types="fomantic-ui-toast" />
-/// <reference types="fomantic-ui-transition" />
-
-/// <reference types="fomantic-ui-api" />
-/// <reference types="fomantic-ui-form" />
-/// <reference types="fomantic-ui-visibility" />
+interface JQuery {
+    accordion:  FomanticUI.Accordion;
+    api:        FomanticUI.API;
+    calendar:   FomanticUI.Calendar;
+    checkbox:   FomanticUI.Checkbox;
+    dimmer:     FomanticUI.Dimmer;
+    dropdown:   FomanticUI.Dropdown;
+    embed:      FomanticUI.Embed;
+    flyout:     FomanticUI.Flyout;
+    form:       FomanticUI.Form;
+    modal:      FomanticUI.Modal;
+    nag:        FomanticUI.Nag;
+    popup:      FomanticUI.Popup;
+    progress:   FomanticUI.Progress;
+    rating:     FomanticUI.Rating;
+    search:     FomanticUI.Search;
+    shape:      FomanticUI.Shape;
+    sidebar:    FomanticUI.Sidebar;
+    slider:     FomanticUI.Slider;
+    sticky:     FomanticUI.Sticky;
+    tab:        FomanticUI.Tab;
+    toast:      FomanticUI.Toast;
+    transition: FomanticUI.Transition;
+    visibility: FomanticUI.Visibility;
+}
