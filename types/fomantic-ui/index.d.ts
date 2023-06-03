@@ -29,29 +29,3 @@
 /// <reference path="fomantic-ui-toast.d.ts" />
 /// <reference path="fomantic-ui-transition.d.ts" />
 /// <reference path="fomantic-ui-visibility.d.ts" />
-
-interface JQuery {
-    accordion:  FomanticUI.Accordion;
-    api:        FomanticUI.API;
-    calendar:   FomanticUI.Calendar;
-    checkbox:   FomanticUI.Checkbox;
-    dimmer:     FomanticUI.Dimmer;
-    dropdown:   FomanticUI.Dropdown;
-    embed:      FomanticUI.Embed;
-    flyout:     FomanticUI.Flyout;
-    form:       FomanticUI.Form;
-    modal:      FomanticUI.Modal;
-    nag:        FomanticUI.Nag;
-    popup:      FomanticUI.Popup;
-    progress:   FomanticUI.Progress;
-    rating:     FomanticUI.Rating;
-    search:     FomanticUI.Search;
-    shape:      FomanticUI.Shape;
-    sidebar:    FomanticUI.Sidebar;
-    slider:     FomanticUI.Slider;
-    sticky:     FomanticUI.Sticky;
-    tab:        FomanticUI.Tab;
-    toast:      FomanticUI.Toast;
-    transition: FomanticUI.Transition;
-    visibility: FomanticUI.Visibility;
-}

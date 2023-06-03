@@ -1,3 +1,7 @@
+interface JQuery {
+    transition: FomanticUI.Transition;
+}
+
 declare namespace FomanticUI {
     interface Transition {
         settings: TransitionSettings;

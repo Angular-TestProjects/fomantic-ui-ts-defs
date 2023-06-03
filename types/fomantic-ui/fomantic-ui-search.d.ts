@@ -1,3 +1,7 @@
+interface JQuery {
+    search: FomanticUI.Search;
+}
+
 declare namespace FomanticUI {
     interface Search {
         settings: SearchSettings;
@@ -166,7 +170,7 @@ declare namespace FomanticUI {
              * @see {@link https://fomantic-ui.com/behaviors/api.html#/settings}
              * @default {}
              */
-            apiSettings: ApiSettings;
+            apiSettings: APISettings;
 
             /**
              * Minimum characters to query for results.

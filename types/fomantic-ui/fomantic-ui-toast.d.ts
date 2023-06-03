@@ -1,3 +1,11 @@
+interface JQuery {
+    toast: FomanticUI.Toast;
+}
+
+interface JQueryStatic {
+    toast: FomanticUI.Toast;
+}
+
 declare namespace FomanticUI {
     interface Toast {
         settings: ToastSettings;

@@ -1,3 +1,7 @@
+interface JQuery {
+    checkbox: FomanticUI.Checkbox;
+}
+
 declare namespace FomanticUI {
     interface Checkbox {
         settings: CheckboxSettings;

@@ -1,3 +1,7 @@
+interface JQuery {
+    dropdown: FomanticUI.Dropdown;
+}
+
 declare namespace FomanticUI {
     interface Dropdown {
         settings: DropdownSettings;
@@ -126,7 +130,12 @@ declare namespace FomanticUI {
              * @see {@link https://fomantic-ui.com/behaviors/api.html#/settings}
              * @default false
              */
-            apiSettings: false | ApiSettings;
+            apiSettings: false | APISettings;
+
+            /**
+             * List mapping dropdown content to JSON Property when using API
+             */
+            fields: Dropdown.FieldsSettings;
 
             /**
              * Whether dropdown should select new option when using keyboard shortcuts.
@@ -323,6 +332,11 @@ declare namespace FomanticUI {
             duration: number;
 
             /**
+             * The keycode used to represent keyboard shortcuts. To avoid issues with some foreign languages, you can pass false for comma delimiter's value
+             */
+            keys: Dropdown.KeySettings;
+
+            /**
              * Specify the final transition display type ('block', 'inline-block' etc) so that it doesn't have to be calculated.
              * @default false
              */
@@ -427,6 +441,10 @@ declare namespace FomanticUI {
 
             // region DOM Settings
 
+            message: Dropdown.MessageSettings;
+            regExp: Dropdown.RegExpSettings;
+            metadata: Dropdown.MetadataSettings;
+
             /**
              * Selectors used to find parts of a module.
              */
@@ -440,6 +458,8 @@ declare namespace FomanticUI {
             // endregion
 
             // region Debug Settings
+
+            error: Dropdown.ErrorSettings;
 
             /**
              * Name used in log statements
@@ -478,6 +498,136 @@ declare namespace FomanticUI {
     }
 
     namespace Dropdown {
+        type FieldsSettings = FieldsSettings.Param;
+
+        namespace FieldsSettings {
+            type Param = (Pick<_Impl, 'remoteValues'> |
+                Pick<_Impl, 'values'> |
+                Pick<_Impl, 'name'> |
+                Pick<_Impl, 'value'>) &
+                Partial<Pick<_Impl, keyof _Impl>>;
+
+            interface _Impl {
+                /**
+                 * grouping for api results
+                 *
+                 * @default 'results'
+                 */
+                remoteValues: string;
+                /**
+                 * grouping for all dropdown values
+                 *
+                 * @default 'values'
+                 */
+                values: string;
+                /**
+                 * displayed dropdown text
+                 *
+                 * @default 'name'
+                 */
+                name: string;
+                /**
+                 * actual dropdown value
+                 *
+                 * @default 'value'
+                 */
+                value: string;
+            }
+        }
+
+        type KeySettings = KeySettings.Param;
+
+        namespace KeySettings {
+            type Param = (Pick<_Impl, 'backspace'> |
+                Pick<_Impl, 'delimiter'> |
+                Pick<_Impl, 'deleteKey'> |
+                Pick<_Impl, 'enter'> |
+                Pick<_Impl, 'escape'> |
+                Pick<_Impl, 'pageUp'> |
+                Pick<_Impl, 'pageDown'> |
+                Pick<_Impl, 'leftArrow'> |
+                Pick<_Impl, 'upArrow'> |
+                Pick<_Impl, 'rightArrow'> |
+                Pick<_Impl, 'downArrow'>) &
+                Partial<Pick<_Impl, keyof _Impl>>;
+
+            interface _Impl {
+                /**
+                 * @default 8
+                 */
+                backspace: number;
+                /**
+                 * @default 188
+                 */
+                delimiter: number | false;
+                /**
+                 * @default 46
+                 */
+                deleteKey: number;
+                /**
+                 * @default 13
+                 */
+                enter: number;
+                /**
+                 * @default 27
+                 */
+                escape: number;
+                /**
+                 * @default 33
+                 */
+                pageUp: number;
+                /**
+                 * @default 34
+                 */
+                pageDown: number;
+                /**
+                 * @default 37
+                 */
+                leftArrow: number;
+                /**
+                 * @default 38
+                 */
+                upArrow: number;
+                /**
+                 * @default 39
+                 */
+                rightArrow: number;
+                /**
+                 * @default 40
+                 */
+                downArrow: number;
+            }
+        }
+
+        type MessageSettings = MessageSettings.Param;
+
+        namespace MessageSettings {
+            type Param = (Pick<_Impl, 'addResult'> |
+                Pick<_Impl, 'count'> |
+                Pick<_Impl, 'maxSelections'> |
+                Pick<_Impl, 'noResults'>) &
+                Partial<Pick<_Impl, keyof _Impl>>;
+
+            interface _Impl {
+                /**
+                 * @default 'Add <b>{term}</b>'
+                 */
+                addResult: string;
+                /**
+                 * @default '{count} selected'
+                 */
+                count: string;
+                /**
+                 * @default 'Max {maxCount} selections'
+                 */
+                maxSelections: string;
+                /**
+                 * 'No results found.'
+                 */
+                noResults: string;
+            }
+        }
+
         type SelectorSettings = SelectorSettings.Param;
 
         namespace SelectorSettings {
@@ -587,6 +737,54 @@ declare namespace FomanticUI {
                  * @default '> .remove.icon'
                  */
                 clearIcon: string;
+            }
+        }
+
+        type RegExpSettings = RegExpSettings.Param;
+
+        namespace RegExpSettings {
+            type Param = (Pick<_Impl, 'escape'>) &
+                Partial<Pick<_Impl, keyof _Impl>>;
+
+            interface _Impl {
+                /**
+                 * @default /[-[\]{}()*+?.,\\^$|#\s]/g
+                 */
+                escape: RegExp;
+            }
+        }
+
+        type MetadataSettings = MetadataSettings.Param;
+
+        namespace MetadataSettings {
+            type Param = (Pick<_Impl, 'defaultText'> |
+                Pick<_Impl, 'defaultValue'> |
+                Pick<_Impl, 'placeholderText'> |
+                Pick<_Impl, 'text'> |
+                Pick<_Impl, 'value'>) &
+                Partial<Pick<_Impl, keyof _Impl>>;
+
+            interface _Impl {
+                /**
+                 * @default 'defaultText'
+                 */
+                defaultText: string;
+                /**
+                 * @default 'defaultValue'
+                 */
+                defaultValue: string;
+                /**
+                 * @default 'placeholderText'
+                 */
+                placeholderText: string;
+                /**
+                 * @default 'text'
+                 */
+                text: string;
+                /**
+                 * @default 'value'
+                 */
+                value: string;
             }
         }
 

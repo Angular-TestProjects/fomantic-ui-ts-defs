@@ -1,3 +1,7 @@
+interface JQuery {
+    modal: FomanticUI.Modal;
+}
+
 declare namespace FomanticUI {
     interface Modal {
         settings: ModalSettings;
@@ -203,6 +207,21 @@ declare namespace FomanticUI {
              * @default true
              */
             closable: boolean;
+
+            /**
+             * You can specify custom settings to extend UI dimmer
+             *
+             * @see {@link http://semantic-ui.com/modules/dimmer.html}
+             */
+            dimmerSettings: DimmerSettings;
+
+            /**
+             * Named transition to use when animating menu in and out, full list can be found in ui transitions docs.
+             *
+             * @default 'scale'
+             * @see {@link http://semantic-ui.com/modules/transition.html}
+             */
+            transition: string;
 
             /**
              * Duration of animation.

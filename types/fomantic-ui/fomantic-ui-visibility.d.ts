@@ -1,3 +1,7 @@
+interface JQuery {
+    visibility: FomanticUI.Visibility;
+}
+
 declare namespace FomanticUI {
     interface Visibility {
         settings: VisibilitySettings;

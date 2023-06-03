@@ -1,3 +1,7 @@
+interface JQuery {
+    progress: FomanticUI.Progress;
+}
+
 declare namespace FomanticUI {
     interface Progress {
         settings: ProgressSettings;

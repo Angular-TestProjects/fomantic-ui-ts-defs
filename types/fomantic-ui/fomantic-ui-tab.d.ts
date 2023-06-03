@@ -1,3 +1,7 @@
+interface JQuery {
+    tab: FomanticUI.Tab;
+}
+
 declare namespace FomanticUI {
     interface Tab {
         settings: TabSettings;
@@ -68,7 +72,6 @@ declare namespace FomanticUI {
             | Pick<_Impl, 'evaluateScripts'>
             | Pick<_Impl, 'autoTabActivation'>
             | Pick<_Impl, 'alwaysRefresh'>
-            | Pick<_Impl, 'deactivate'>
             | Pick<_Impl, 'cacheType'>
             | Pick<_Impl, 'cache'>
             | Pick<_Impl, 'apiSettings'>

@@ -1,3 +1,7 @@
+interface JQuery {
+    sidebar: FomanticUI.Sidebar;
+}
+
 declare namespace FomanticUI {
     interface Sidebar {
         settings: SidebarSettings;

@@ -1,0 +1,43 @@
+{
+    "name": "@types-i/fomantic-ui",
+    "version": "2.9.5",
+    "description": "TypeScript definitions for Fomantic UI",
+    "license": "MIT",
+    "main": "index.d.ts",
+    "files": [
+        "index.d.ts",
+        "fomantic-ui-accordion.d.ts",
+        "fomantic-ui-api.d.ts",
+        "fomantic-ui-calendar.d.ts",
+        "fomantic-ui-checkbox.d.ts",
+        "fomantic-ui-dimmer.d.ts",
+        "fomantic-ui-dropdown.d.ts",
+        "fomantic-ui-embed.d.ts",
+        "fomantic-ui-flyout.d.ts",
+        "fomantic-ui-form.d.ts",
+        "fomantic-ui-modal.d.ts",
+        "fomantic-ui-nag.d.ts",
+        "fomantic-ui-popup.d.ts",
+        "fomantic-ui-progress.d.ts",
+        "fomantic-ui-rating.d.ts",
+        "fomantic-ui-search.d.ts",
+        "fomantic-ui-shape.d.ts",
+        "fomantic-ui-sidebar.d.ts",
+        "fomantic-ui-slider.d.ts",
+        "fomantic-ui-sticky.d.ts",
+        "fomantic-ui-tab.d.ts",
+        "fomantic-ui-toast.d.ts",
+        "fomantic-ui-transition.d.ts",
+        "fomantic-ui-visibility.d.ts"
+    ],
+    "types": "index",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/fomantic/DefinitelyTyped.git"
+    },
+    "scripts": {},
+    "dependencies": {
+        "@types/jquery": "*"
+    },
+    "typesPublisherContentHash": "9a3db301b44451d307520410bd68a14b1f733de1e91dd327e5d91eb239250a17"
+}

@@ -1,3 +1,7 @@
+interface JQuery {
+    form: FomanticUI.Form;
+}
+
 declare namespace FomanticUI {
     interface Form {
         settings: FormSettings;

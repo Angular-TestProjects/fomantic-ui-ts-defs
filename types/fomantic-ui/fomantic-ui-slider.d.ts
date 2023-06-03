@@ -1,3 +1,7 @@
+interface JQuery {
+    slider: FomanticUI.Slider;
+}
+
 declare namespace FomanticUI {
     interface Slider {
         settings: SliderSettings;

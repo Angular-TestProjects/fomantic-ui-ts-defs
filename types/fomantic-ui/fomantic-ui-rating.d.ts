@@ -1,3 +1,7 @@
+interface JQuery {
+    rating: FomanticUI.Rating;
+}
+
 declare namespace FomanticUI {
     interface Rating {
         settings: RatingSettings;

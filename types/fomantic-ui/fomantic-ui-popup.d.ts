@@ -1,3 +1,7 @@
+interface JQuery {
+    popup: FomanticUI.Popup;
+}
+
 declare namespace FomanticUI {
     interface Popup {
         settings: PopupSettings;

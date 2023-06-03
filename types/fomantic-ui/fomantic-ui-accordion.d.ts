@@ -1,3 +1,7 @@
+interface JQuery {
+    accordion:  FomanticUI.Accordion;
+}
+
 declare namespace FomanticUI {
     interface Accordion {
         settings: AccordionSettings;

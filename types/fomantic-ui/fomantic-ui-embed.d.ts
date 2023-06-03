@@ -1,3 +1,7 @@
+interface JQuery {
+    embed: FomanticUI.Embed;
+}
+
 declare namespace FomanticUI {
     interface Embed {
         settings: EmbedSettings;

@@ -1,3 +1,7 @@
+interface JQuery {
+    calendar:   FomanticUI.Calendar;
+}
+
 declare namespace FomanticUI {
     interface Calendar {
         settings: CalendarSettings;

@@ -1,3 +1,7 @@
+interface JQuery {
+    sticky: FomanticUI.Sticky;
+}
+
 declare namespace FomanticUI {
     interface Sticky {
         settings: StickySettings;

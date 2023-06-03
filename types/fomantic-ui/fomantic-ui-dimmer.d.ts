@@ -1,3 +1,7 @@
+interface JQuery {
+    dimmer: FomanticUI.Dimmer;
+}
+
 declare namespace FomanticUI {
     interface Dimmer {
         settings: DimmerSettings;

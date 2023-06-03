@@ -1,3 +1,7 @@
+interface JQuery {
+    flyout: FomanticUI.Flyout;
+}
+
 declare namespace FomanticUI {
     interface Flyout {
         settings: FlyoutSettings;

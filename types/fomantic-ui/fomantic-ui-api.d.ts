@@ -1,3 +1,11 @@
+interface JQuery {
+    api:        FomanticUI.API;
+}
+
+interface JQueryStatic {
+    api:    FomanticUI.API;
+}
+
 declare namespace FomanticUI {
     interface API {
         settings: APISettings;

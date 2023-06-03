@@ -1,3 +1,7 @@
+interface JQuery {
+    nag: FomanticUI.Nag;
+}
+
 declare namespace FomanticUI {
     interface Nag {
         settings: NagSettings;

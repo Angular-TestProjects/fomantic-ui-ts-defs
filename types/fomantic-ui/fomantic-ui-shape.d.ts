@@ -1,3 +1,7 @@
+interface JQuery {
+    shape: FomanticUI.Shape;
+}
+
 declare namespace FomanticUI {
     interface Shape {
         settings: ShapeSettings;
